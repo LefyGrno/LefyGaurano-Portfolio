@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lefy Gaurano | Aspiring Game Developer Portfolio</title>
+
+    <link rel="icon" type="image/png" href="LG_logo.png">
+    <link rel="apple-touch-icon" href="LG_logo.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+    <div class="scroll-progress" id="progressBar"></div>
+
+    <nav class="topnav">
+        <div class="nav-container">
+            <a href="#home" class="logo">LG<span class="dot">.</span></a>
+            <div class="nav-right-container">
+                <div class="nav-links" id="navLinks">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#certificates" class="nav-link">Certificates</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#news" class="nav-link">News</a>
+                    <a href="#ask" class="nav-link">FAQ</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="hero-container reveal-element">
+            <div class="hero-image-wrapper">
+                <div class="hero-image-backdrop"></div>
+                <div class="hero-img-card">
+                    <img src="LG.png" alt="Lefy Gaurano Profile" class="hero-img">
+                </div>
+            </div>
+            <div class="hero-content">
+                <div class="welcome-badge"><i class="fas fa-sparkles"></i> Welcome to my space</div>
+                <h1>Hi, I'm <span class="highlight">Lefy Gaurano</span></h1>
+                <h2 class="typing-container">I am a <span id="typewriter" class="typewriter-text"></span><span class="cursor">|</span></h2>
+                <p>Aspiring Frontend Developer by day, Game Developer by heart. I am bridging the gap between creative design and clean code, building web applications that focus on accessibility and responsiveness. Whether crafting intuitive user interfaces or exploring logic-driven game loops, I am dedicated to learning, growing, and delivering engaging digital experiences.</p>
+                <div class="hero-action-group">
+                    <div class="hero-primary-btns">
+                        <a href="#contact" class="btn btn-primary">Get In Touch <i class="fas fa-arrow-right"></i></a>
+                        <a href="#projects" class="btn btn-secondary">Explore Work</a>
+                    </div>
+                    <div class="social-buttons-bar">
+                        <a href="https://github.com/LefyGrno" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://linkedin.com/in/lefy-grno-6a7a41435" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lefy.grno@gmail.com"
+                           target="_blank"
+                           rel="noopener"
+                           class="social-btn"
+                           id="gmail-btn"
+                           onclick="copyEmailToClipboard(event, 'lefy.grno@gmail.com')">
+                            <i class="fas fa-envelope"></i> <span id="btn-text">Gmail</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT ME — updated with education, learning path, and
+         leadership / organizational experience.
+         ============================================================ -->
+    <section id="about" class="inner-section">
+        <div class="section-container reveal-element">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>A look into who I am beyond the code editor.</p>
+            </div>
+            <div class="about-card">
+                <p>I'm currently a 2nd-year Bachelor of Science in Computer Science student at Lipa City Colleges, under the College of Computing and Technology Engineering (CCTE) department. My studies are grounded in programming fundamentals, data structures, and software engineering — the foundation I'm building on to become a well-rounded developer.</p>
+
+                <p>Right now I'm actively developing my skills in Full-Stack Web Development, with a growing interest in Machine Learning as a possible side path. Once I graduate, though, I plan to venture into Game Development — the field I've been most passionate about since I first started coding.</p>
+
+                <p>Leadership and communication have been a constant alongside my technical work. I've served as Class President from elementary through senior high school, held a position in our departmental organization, and currently write for LCC's <em>The Vision Group of Publications</em> as an Editorial, Development and Communication, and Literary Writer majoring in English.</p>
+
+                <p>Aside from my technical pursuits, you can usually find me playing video games, reading different literature, or even capturing amateur landscape photography, or exploring local coffee roasters when I have the time.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="inner-section">
+        <div class="section-container reveal-element">
+            <div class="section-header">
+                <h2>Skills Matrix</h2>
+                <p>Technologies I'm actively learning — always growing, always building.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card" data-percent="15">
+                    <div class="skill-header">
+                        <h3>Core Web Foundations</h3>
+                        <span class="skill-value">0%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-fill"></div></div>
+                    <p class="skill-desc">HTML5, CSS3, JavaScript (ES6+) — building responsive layouts and interactive UI</p>
+                </div>
+                <div class="skill-card" data-percent="5">
+                    <div class="skill-header">
+                        <h3>Backend & Database</h3>
+                        <span class="skill-value">0%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-fill"></div></div>
+                    <p class="skill-desc">PHP & SQL — server-side scripting, form handling, and basic database queries</p>
+                </div>
+                <div class="skill-card" data-percent="10">
+                    <div class="skill-header">
+                        <h3>Programming Languages</h3>
+                        <span class="skill-value">0%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-fill"></div></div>
+                    <p class="skill-desc">Python, Java, C# — exploring syntax, logic, OOP fundamentals, and problem solving</p>
+                </div>
+                <div class="skill-card" data-percent="10">
+                    <div class="skill-header">
+                        <h3>Creative Media & Design</h3>
+                        <span class="skill-value">0%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-fill"></div></div>
+                    <p class="skill-desc">Video editing in CapCut, digital drawing in Krita and ibisPaint, and music production in GarageBand</p>
+                </div>
+                <div class="skill-card" data-percent="1">
+                    <div class="skill-header">
+                        <h3>Version Control & Cloud Tools</h3>
+                        <span class="skill-value">0%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-fill"></div></div>
+                    <p class="skill-desc">Currently learning Git & GitHub for collaboration, plus Supabase for backend-as-a-service</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="inner-section">
+        <div class="section-container reveal-element">
+            <div class="section-header">
+                <h2>Certificates & Credentials</h2>
+                <p>Sift through my verified certifications as an interactive 3D book.</p>
+            </div>
+
+            <div class="flipbook-wrapper">
+                <div class="book-viewport">
+                    <div class="book-3d">
+
+                        <div class="book-page book-page-left">
+                            <div class="cert-header-block">
+                                <div class="cert-label">LG.Certifications</div>
+                                <p class="cert-subtitle">Verified Digital Credentials &amp; Diplomas</p>
+                            </div>
+                            <div class="cert-divider"></div>
+                            <div class="cert-description" id="certDescriptionLeft"></div>
+                        </div>
+
+                        <div class="book-page book-page-right">
+                            <div class="cert-image-container" id="rightBasePage"></div>
+                        </div>
+
+                        <div class="turning-leaf" id="turningLeaf">
+                            <div class="leaf-face leaf-front" id="leafFront"></div>
+                            <div class="leaf-face leaf-back"  id="leafBack"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="flip-controls">
+                    <span class="spread-indicator" id="spreadIndicator">
+                        <i class="fas fa-book-open"></i> Certificate 1 of 4
+                    </span>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-secondary" id="flipPrevBtn" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                        <button class="btn btn-primary" id="flipNextBtn">Next Page <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="inner-section">
+        <div class="section-container reveal-element">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>A selective showcase of platforms and web products I've engineered.</p>
+            </div>
+            <div class="project-deck">
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="reclaim-screenshot.png" alt="ReClaim Lost and Found Platform">
+                    </div>
+                    <div class="project-info">
+                        <h3>ReClaim — Lost & Found Network</h3>
+                        <p>A community-driven lost and found platform built with PHP, MySQL, and vanilla JavaScript. Features item reporting, photo uploads, community search, and a public item database.</p>
+                        <a href="http://reclaimtest.page.gd/"
+                           target="_blank"
+                           rel="noopener"
+                           class="project-link">Visit Site <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card project-card--wip">
+                    <div class="project-img-wrapper project-img-wrapper--wip">
+                        <div class="wip-overlay">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>In Development</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>School Payroll Management System</h3>
+                        <p>A payroll platform currently in development for managing faculty and staff compensation, deductions, and payslip generation. Built with PHP and MySQL.</p>
+                        <span class="project-link project-link--disabled">
+                            Coming Soon <i class="fas fa-clock"></i>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="inner-section">
+        <div class="section-container reveal-element">
+            <div class="section-header">
+                <h2>Latest Updates</h2>
+                <p>Recent milestones from this portfolio and the projects inside it.</p>
+            </div>
+            <div class="news-list">
+
+                <article class="news-card">
+                    <div class="news-meta"><i class="fas fa-calendar-alt"></i> October 2026</div>
+                    <h3>Launched Portfolio 3.0 with a Live 3D Certificate Book</h3>
+                    <p>Rebuilt this portfolio from scratch with a real-page-turn 3D certificate flip book, a rules-based chatbot for the "Ask About Me" section, a light/dark theme toggle that persists across visits, and a fully responsive layout tuned from 360px to desktop.</p>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-meta"><i class="fas fa-calendar-alt"></i> October 2026</div>
+                    <h3>Deployed ReClaim — My First Live PHP + MySQL App</h3>
+                    <p>ReClaim, my community lost-and-found platform, is now live on InfinityFree with its own MySQL database. It's the first full-stack project I've shipped to the public web, and it's featured right here in the Featured Projects section.</p>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-meta"><i class="fas fa-calendar-alt"></i> Coming Soon</div>
+                    <h3>Building a School Payroll Management System</h3>
+                    <p>Currently architecting a payroll platform for managing faculty and staff compensation, deductions, and payslip generation using PHP and MySQL. A placeholder card is already live in the Featured Projects section.</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="ask" class="inner-section">
+        <div class="section-container reveal-element">
+            <div class="section-header">
+                <h2>Ask About Me</h2>
+                <p>A simple chatbot that answers predefined questions about me.</p>
+            </div>
+
+            <div class="chatbot-card">
+                <div class="chat-window" id="chatWindow" aria-live="polite"></div>
+                <div class="chat-suggestions" id="chatSuggestions"></div>
+                <form class="chat-input-row" id="chatForm" autocomplete="off">
+                    <input type="text" id="chatInput" placeholder="Ask me something… (e.g. 'What are your skills?')" aria-label="Type your question">
+                    <button type="submit" class="btn btn-primary" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="inner-section">
+        <div class="section-container reveal-element">
+            <div class="section-header">
+                <h2>Contact Section</h2>
+                <p>Have a project idea or want to connect? Send me a direct message!</p>
+            </div>
+            <div class="contact-card">
+                <form id="portfolioForm"
+                      class="portfolio-form"
+                      action="https://formspree.io/f/mbgdgoov"
+                      method="POST">
+                    <div class="input-row">
+                        <div class="field-box">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Jane Doe">
+                        </div>
+                        <div class="field-box">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                        </div>
+                    </div>
+                    <div class="field-box">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project scope..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <button class="back-to-top-btn" id="backToTopBtn">
+                <i class="fas fa-arrow-up"></i> Page Up (Back to Top)
+            </button>
+            <div class="footer-socials">
+                <a href="https://github.com/LefyGrno" target="_blank" rel="noopener" class="footer-social-btn"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/lefy-grno-6a7a41435" target="_blank" rel="noopener" class="footer-social-btn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lefy.grno@gmail.com"
+                   target="_blank"
+                   rel="noopener"
+                   class="footer-social-btn"
+                   id="footer-gmail-btn"
+                   onclick="copyEmailToClipboard(event, 'lefy.grno@gmail.com', 'footer-gmail-btn')">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2026 Lefy Gaurano – Aspiring Game Developer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
