@@ -120,17 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ==============================================================
-       5. CERTIFICATE BOOK — REAL PAGE TURN (faster + instant image swap)
-       ==============================================================
-       FLIP_MS = 600 (must match CSS .turning-leaf transition: 0.6s).
-
-       Timeline of a Next flip:
-         t=0        : leaf sits on the right, showing current image.
-         t=0→600    : leaf rotates -180deg over the spine.
-         t=240      : left panel description is swapped (hidden by leaf).
-         t=610      : right-page image is swapped WHILE the leaf still
-                      covers the right half. On the next frame, the leaf
-                      is hidden — so the new image is already painted.
+       5. CERTIFICATE BOOK — REAL PAGE TURN
        ============================================================== */
     const certificates = [
         { badge: "DICT · ILCDB",     title: "Fundamentals of Robotics",                                       issuer: "DICT Region III · ICT Literacy and Competency Development Bureau", year: "Aug. 2024", image: "cert1.jpg" },
@@ -152,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const flipNextBtn         = document.getElementById("flipNextBtn");
     const spreadIndicator     = document.getElementById("spreadIndicator");
 
-    /* Build the full description HTML (used on the leaf's back face) */
     function descriptionHTML(cert) {
         return `
             <div class="cert-header-block">
@@ -169,7 +158,6 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    /* Build just the inner description block (used on the static left panel) */
     function renderLeft(cert) {
         certDescriptionLeft.innerHTML = `
             <span class="cert-badge">${cert.badge}</span>
@@ -198,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
         turningLeaf.style.transition = "";
     }
 
-    /* ---------- FLIP FORWARD (Next) ---------- */
     function turnNextPage() {
         if (isFlipping) return;
         if (certIndex >= certificates.length - 1) return;
@@ -207,37 +194,25 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentCert = certificates[certIndex];
         const nextCert    = certificates[certIndex + 1];
 
-        // 1. Leaf front = current right image (turning away)
         renderImageInto(leafFront, currentCert);
-        // 2. Leaf back  = next left description (arriving on the left)
         leafBack.innerHTML = descriptionHTML(nextCert);
 
-        // 3. Show leaf, snap to 0deg (still covering the right half)
         turningLeaf.style.visibility = "visible";
         snapLeaf(0);
 
-        // 4. Next frame: start the rotation
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 turningLeaf.classList.add("turning-next");
             });
         });
 
-        // 5. Mid-flip: update the LEFT panel (hidden by the leaf's back face)
-        setTimeout(() => {
-            renderLeft(nextCert);
-        }, FLIP_MS * 0.4);
+        setTimeout(() => { renderLeft(nextCert); }, FLIP_MS * 0.4);
 
-        // 6. Update index + controls
         certIndex++;
         updateBookControls();
 
-        // 7. Just BEFORE the leaf lands: swap the right-page image while the
-        //    leaf still fully covers the right half. Then, on the next frame,
-        //    hide the leaf — so the new image is already painted underneath.
         setTimeout(() => {
             renderImageInto(rightBasePage, certificates[certIndex]);
-
             requestAnimationFrame(() => {
                 turningLeaf.style.visibility = "hidden";
                 snapLeaf(0);
@@ -248,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, FLIP_MS + 10);
     }
 
-    /* ---------- FLIP BACKWARD (Previous) ---------- */
     function turnPrevPage() {
         if (isFlipping) return;
         if (certIndex <= 0) return;
@@ -257,36 +231,25 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentCert = certificates[certIndex];
         const prevCert    = certificates[certIndex - 1];
 
-        // 1. Leaf front = previous right image (will land on the right)
         renderImageInto(leafFront, prevCert);
-        // 2. Leaf back  = current left description (sitting on the left now)
         leafBack.innerHTML = descriptionHTML(currentCert);
 
-        // 3. Show leaf, snap to -180deg (face-down on the left)
         turningLeaf.style.visibility = "visible";
         snapLeaf(-180);
 
-        // 4. Next frame: rotate back to 0deg
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 turningLeaf.classList.remove("turning-prev");
             });
         });
 
-        // 5. Mid-flip: put the previous description on the left panel
-        setTimeout(() => {
-            renderLeft(prevCert);
-        }, FLIP_MS * 0.4);
+        setTimeout(() => { renderLeft(prevCert); }, FLIP_MS * 0.4);
 
-        // 6. Update index + controls
         certIndex--;
         updateBookControls();
 
-        // 7. Just BEFORE the leaf lands: swap the right-page image (invisible
-        //    because the leaf still covers the right half), then hide the leaf.
         setTimeout(() => {
             renderImageInto(rightBasePage, certificates[certIndex]);
-
             requestAnimationFrame(() => {
                 turningLeaf.style.visibility = "hidden";
                 snapLeaf(0);
@@ -300,7 +263,6 @@ document.addEventListener("DOMContentLoaded", () => {
     flipNextBtn.addEventListener("click", turnNextPage);
     flipPrevBtn.addEventListener("click", turnPrevPage);
 
-    // ---- INITIAL RENDER ----
     renderLeft(certificates[0]);
     renderImageInto(rightBasePage, certificates[0]);
     updateBookControls();
@@ -356,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             patterns: ["education", "school", "study", "college", "university"],
-            answer: "I'm currently studying Information Technology at STI College Lipa, focusing on web development and software engineering fundamentals."
+            answer: "I'm a 2nd-year BS Computer Science student at Lipa City Colleges, under the College of Computing and Technology Engineering (CCTE) department."
         },
         {
             patterns: ["certificate", "certification", "credential"],
@@ -453,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
         handleUserMessage(chatInput.value);
     });
 
-    appendMessage("Hi! I'm Lefy's portfolio assistant. Ask me anything about him — try one of the quick questions below. 👇", "bot");
+    appendMessage("Hi! I'm Lefy's portfolio assistant. Ask me anything about her — try one of the quick questions below. 👇", "bot");
     buildChips();
 
     /* ==============================================================
@@ -483,8 +445,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ==============================================================
        10. CONTACT FORM — handled natively by Formspree.
-       No JS needed. The <form action="https://formspree.io/f/mbgdgoov">
-       in index.html posts directly to Formspree, which emails you.
        ============================================================== */
 
 });
